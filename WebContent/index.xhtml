@@ -1,0 +1,22 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/include/template.xhtml">
+
+	<ui:define name="conteudo">
+
+		<h:messages/>
+		
+		<h:form>
+			<fieldset>
+			<p> Usuário: </p> <p> <h:inputText 
+			value="#{usuarioMBean.usuario.login}" /> </p>
+			<p> Senha: </p> <p> <h:inputSecret
+			 value="#{usuarioMBean.usuario.senha}" /></p>
+			<p> <h:commandButton action="#{usuarioMBean.logar}" value="Logar" /> </p>
+			</fieldset>
+		</h:form>
+		
+	</ui:define>
+</ui:composition>
