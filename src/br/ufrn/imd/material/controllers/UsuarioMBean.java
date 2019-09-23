@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.ufrn.imd.material.dominio.Usuario;
@@ -13,6 +14,9 @@ import br.ufrn.imd.material.repositorios.UsuarioRepositorio;
 @Named("usuarioMBean")
 @SessionScoped
 public class UsuarioMBean implements Serializable {
+	
+	@Inject
+	private UsuarioRepositorio usuarioRepositorio;
 	
 	private Usuario usuario;
 	
@@ -23,7 +27,7 @@ public class UsuarioMBean implements Serializable {
 	}
 
 	public String logar() {
-		Usuario usuarioBd = UsuarioRepositorio.getUsuario(usuario.getLogin(), usuario.getSenha());
+		Usuario usuarioBd = usuarioRepositorio.getUsuario(usuario.getLogin(), usuario.getSenha());
 		if(usuarioBd != null) {
 			usuarioLogado = usuarioBd;
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioLogado", usuarioLogado);

@@ -24,7 +24,7 @@ public class Material {
 	
 	private String descricao;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date dataCadastro;
 	
 	@ManyToOne

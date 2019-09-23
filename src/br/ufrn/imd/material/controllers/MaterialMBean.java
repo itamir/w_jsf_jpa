@@ -22,6 +22,9 @@ public class MaterialMBean implements Serializable {
 	@Inject
 	private UsuarioMBean usuarioMBean;
 	
+	@Inject
+	private MaterialRepositorio materialRepositorio;
+	
 	public MaterialMBean() {
 		material = new Material();
 	}
@@ -31,18 +34,18 @@ public class MaterialMBean implements Serializable {
 	}	
 	public String listarMateriais() {
 		materiaisModel = new ListDataModel<Material>
-		(MaterialRepositorio.listarMateriais());
+		(materialRepositorio.listarMateriais());
 		return "/pages/material/list.jsf";
 	}
 	public String cadastrarMaterial() {
 		material.setUsuarioCadastro(usuarioMBean.getUsuarioLogado());
-		MaterialRepositorio.adicionar(material);
+		materialRepositorio.adicionar(material);
 		material = new Material();
 		return "/pages/material/form.jsf";
 	}
 	public String removerMaterial() {
 		Material materialRemovido = materiaisModel.getRowData();
-		MaterialRepositorio.remover(materialRemovido);
+		materialRepositorio.remover(materialRemovido);
 		return listarMateriais();
 	}
 	
