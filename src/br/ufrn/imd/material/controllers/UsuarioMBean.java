@@ -33,9 +33,9 @@ public class UsuarioMBean implements Serializable {
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuarioLogado", usuarioLogado);
 			return "/pages/index.jsf";
 		}
-		//não existe
+		//nï¿½o existe
 		else {
-			FacesMessage msg = new FacesMessage("Usuário não encontrado.");
+			FacesMessage msg = new FacesMessage("UsuÃ¡rio nÃ£o encontrado.");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			FacesContext.getCurrentInstance().addMessage("", msg);
 			return null;

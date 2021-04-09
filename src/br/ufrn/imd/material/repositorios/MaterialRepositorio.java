@@ -47,4 +47,17 @@ public class MaterialRepositorio {
 			return null;
 		}
 	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public List<Material> buscarMaterialUsuario(int idUsuario) {
+		String jpaql ="select m from Material m"
+				+ " where m.usuarioCadastro.id = :idUsuario";
+		
+		Query q = em.createQuery(jpaql);
+		q.setParameter("idUsuario", idUsuario);
+		
+		return (List<Material>) q.getResultList();
+		
+	}
 }
